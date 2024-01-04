@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-#  weather_cache:
-##    image: jamer007/canadian_weather_rest:latest
-#    image: weather_cache
-#    ports:
-#      - "3003:3000"
+  weather_cache:
+#    image: jamer007/canadian_weather_rest:latest
+    image: weather_cache
+    ports:
+      - "3003:3003"
 
 
   redis:

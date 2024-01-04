@@ -11,8 +11,9 @@ use serde::{Deserialize, Serialize};
 async fn main() {
     // build our application with a route
     // let redis_client = redis::Client::open("redis://127.0.0.1/#insecure").unwrap();
-    let redis_client = redis::Client::open("redis://127.0.0.1/#insecure").expect("Error while testing the connection");
+    let redis_client = redis::Client::open("redis://redis/#insecure").expect("Error while testing the connection");
     let redis_pool = RedisPool::from(redis_client);
+    println!("Redis connected");
 
     let app = Router::new()
         // `GET /` goes to `root`
@@ -21,9 +22,6 @@ async fn main() {
         // `POST /users` goes to `create_user`
         .route("/users", post(create_user))
         .with_state(redis_pool);
-
-    // let aw: (StatusCode, Json<Vec<Forecast>>) = get_accuweather_forecast().await;
-    // println!("Age = {}", aw);
 
     // run our app with hyper, listening globally on port 3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3003").await.unwrap();
