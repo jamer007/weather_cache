@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   weather_cache:
-#    image: jamer007/weather_cache:latest
-    image: weather_cache
+    image: jamer007/weather_cache:latest
+#    image: weather_cache
     ports:
       - "3003:3003"
     environment:
