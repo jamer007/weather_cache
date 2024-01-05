@@ -2,14 +2,15 @@ version: '3.9'
 
 services:
   weather_cache:
-#    image: jamer007/canadian_weather_rest:latest
+#    image: jamer007/weather_cache:latest
     image: weather_cache
     ports:
       - "3003:3003"
-
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_CACHE_TTL_SEC=600
 
   redis:
-#    image: jamer007/canadian_weather_rest:latest
     image: redis
     ports:
       - '6380:6379'
